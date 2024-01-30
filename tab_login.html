@@ -34,20 +34,18 @@
     </main>
     <script>
         //시험 조건에 대한 답을 여기 작성하세요.
+        // 1번
         const tab_title = document.querySelectorAll('.tab_title > a')
         const tab_contents = document.querySelectorAll('.tab_c')
-
         const hide = () => {for(let h of tab_contents){
             h.style.display = 'none'
         }}
         hide()
         tab_contents[0].style.display = 'block'
-
         const t_hide = () => {for(let h of tab_title){
             h.classList.remove('active')
         }}
         tab_title[0].classList.add('active')
-
         tab_title.forEach((t,i)=>{
             t.addEventListener('click',()=>{
                 hide()
@@ -55,6 +53,27 @@
                 tab_contents[i].style.display = 'block'
                 t.classList.add('active')
             })
+        })
+        // 2번
+        const error = document.querySelector('.error')
+        const login_btn = document.querySelector('#login')
+        const id = document.querySelector('#id')
+        const pw = document.querySelector('#pw')
+        const user = [{
+            id:'admin',
+            pw:'1234'
+        }]
+        
+        login_btn.addEventListener('click',()=>{
+            if(id.value === '' && pw.value === ''){
+                error.innerHTML = '아이디와 비밀번호를 입력하세요'
+            }else if(id.value === ''){
+                error.innerHTML = '아이디를 입력하세요'
+            }else if(pw.value === ''){
+                error.innerHTML = '비밀번호를 입력하세요'
+            }else if(id.value === user[0].id && pw.value === user[0].pw){
+                alert('로그인 성공하였습니다')
+            }
         })
     </script>
 </body>
